@@ -19,6 +19,10 @@ class UsersService {
         let user = await userModel.deleteOne({ _id: id });
         return user;
     }
+    async findByName(username) {
+        let user = await userModel.findOne({ username: username });
+        return user;
+    }
 }
 export default UsersService;
 //# sourceMappingURL=Users.js.map

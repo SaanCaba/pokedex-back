@@ -1,4 +1,5 @@
 import express from "express";
+import passport from "passport";
 import { validateHandler } from "../../middlewares/validator.handler.js";
 import { authSchema } from "../../schema/auth.schema.js";
 import AuthService from "../../services/Auth.js";
@@ -16,16 +17,22 @@ router.post(
   }
 );
 
-router.post("/login", async (req, res, next) => {
-  try {
-    const { username, password } = req.body;
-    let userLogueado = await service.login(username, password);
-    if (userLogueado) {
-      return res.json({ message: "Logueado con éxito", userLogueado });
+router.post(
+  "/login",
+  //llamamos a la estrategia de authenticación
+  passport.authenticate("local", { session: false }),
+  async (req, res, next) => {
+    try {
+      //si pasa la validación de passport el user queda almacenado en el request
+      let userData = {
+        id: req.user._id,
+        username: req.user.username,
+      };
+      res.json(userData);
+    } catch (error) {
+      next(error);
     }
-  } catch (error) {
-    next(error);
   }
-});
+);
 
 export default router;

@@ -6,8 +6,12 @@ import helmet from "helmet";
 dotenv.config();
 import connection from "./db/connection/connection.js";
 import { boomErrorHandler, errorHandler, logErrors, } from "./middlewares/error.handler.js";
+import passport from "passport";
+import LocalStrategy from "./routes/utils/auth/strategies/local.strategy.js";
 connection();
 const app = express();
+//estrategias de passport, logeo en "local."
+passport.use(LocalStrategy);
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use(helmet());
