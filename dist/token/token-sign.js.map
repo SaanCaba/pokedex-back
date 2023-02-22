@@ -1,0 +1,1 @@
+{"version":3,"file":"token-sign.js","sourceRoot":"","sources":["../../src/token/token-sign.ts"],"names":[],"mappings":"AAAA,OAAO,GAAG,MAAM,cAAc,CAAC;AAE/B,MAAM,CAAC,OAAO,UAAU,SAAS;IAC/B,MAAM,KAAK,GAAG,GAAG,CAAC,IAAI,CAAC,EAAE,EAAE,OAAO,CAAC,GAAG,CAAC,MAAM,EAAE,EAAE,SAAS,EAAE,IAAI,EAAE,CAAC,CAAC;IACpE,OAAO,KAAK,CAAC;AACf,CAAC"}
